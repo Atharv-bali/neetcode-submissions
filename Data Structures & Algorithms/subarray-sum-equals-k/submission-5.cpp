@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        unordered_map<int,int> mpp;
+        int n = nums.size(),sum=0,count=0;
+        mpp[0] = 1;
+        for(int i=0;i<n;i++) {
+            sum += nums[i];
+            count += mpp[sum-k];
+            mpp[sum]++;
+        }
+        return count;
+    }
+};
+//Time complexity: O(n)
+//Space complexity: O(n)
